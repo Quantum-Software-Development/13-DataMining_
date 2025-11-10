@@ -243,7 +243,54 @@ plt.show()
 
 [-]()  ***DBSCAN*** can detect arbitrary-shaped clusters (e.g., spirals) and noise.
 
+
 <br><br>
+
+## PCA Implementation (Code + Visualization)
+
+Here’s a simple example of PCA using the Iris dataset:
+
+<br>
+
+```python
+from sklearn.decomposition import PCA
+from sklearn.datasets import load_iris
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Standardize
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Apply PCA
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+# Visualize
+plt.figure(figsize=(8,6))
+sns.scatterplot(x=X_pca[:,0], y=X_pca[:,1], hue=y, palette='viridis', s=100)
+plt.xlabel("Principal Component 1")
+plt.ylabel("Principal Component 2")
+plt.title("PCA Projection of Iris Dataset")
+plt.show()
+```
+
+<br><br>
+
+
+
+
+
+
+
+
+
 
 
 
